@@ -1,5 +1,7 @@
 # Loan Document Analyzer
 
+[![CI](https://github.com/junaidahmed9909/loan-document-analyzer/actions/workflows/ci.yml/badge.svg)](https://github.com/junaidahmed9909/loan-document-analyzer/actions/workflows/ci.yml)
+
 Loan processors spend hours reading the same kinds of documents: applications, pay stubs, bank statements. They pull out the same ten numbers, do the same math, and hunt for the same red flags. Then someone asks "where's the down payment coming from?" and they go digging again.
 
 This app does the first pass for them. Upload an applicant's documents and you get the key figures, the debt-to-income and loan-to-value math, a list of risk flags with plain-English reasons, and a box where you can ask questions and get answers that cite the exact page they came from.
