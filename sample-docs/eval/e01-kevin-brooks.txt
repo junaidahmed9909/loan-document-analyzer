@@ -1,0 +1,11 @@
+MORTGAGE APPLICATION (SAMPLE - FICTIONAL DATA)
+
+Borrower Name: Kevin Brooks
+Employer Name: Lakeview Manufacturing
+Base Salary: $78,500
+Monthly Debt Payments: $640
+Loan Amount Requested: $210,000
+Estimated Value: $265,000
+Note Rate: 6.875%
+Term: 30 years
+Credit Score: 718

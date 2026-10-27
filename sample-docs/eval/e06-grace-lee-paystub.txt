@@ -1,0 +1,7 @@
+RIVERSIDE SCHOOLS PAYROLL (SAMPLE - FICTIONAL DATA)
+
+Employee Name: Grace Lee
+Pay Schedule: Monthly
+Gross Pay: $6,250.00
+Deductions: $1,580.00
+Net Pay: $4,670.00

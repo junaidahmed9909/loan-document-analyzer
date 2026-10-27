@@ -1,0 +1,10 @@
+PERSONAL LOAN APPLICATION (SAMPLE - FICTIONAL DATA)
+
+Applicant's Name: Omar Farouk
+Employed By: Crescent Pharmacy
+Annual Income: $64,000
+Monthly Debts: $1,900
+Amount Requested: $15,000
+Interest Rate: 11.5%
+Term: 48 months
+Credit Score: 631

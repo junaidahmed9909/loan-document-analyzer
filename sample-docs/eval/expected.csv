@@ -1,0 +1,57 @@
+file,field,value
+e01-kevin-brooks.txt,applicantName,Kevin Brooks
+e01-kevin-brooks.txt,employer,Lakeview Manufacturing
+e01-kevin-brooks.txt,annualIncome,78500
+e01-kevin-brooks.txt,monthlyDebtPayments,640
+e01-kevin-brooks.txt,loanAmount,210000
+e01-kevin-brooks.txt,propertyValue,265000
+e01-kevin-brooks.txt,interestRate,6.875
+e01-kevin-brooks.txt,loanTermMonths,360
+e01-kevin-brooks.txt,creditScore,718
+e02-aisha-rahman.txt,applicantName,Aisha Rahman
+e02-aisha-rahman.txt,employer,Greenfield Logistics
+e02-aisha-rahman.txt,annualIncome,88000
+e02-aisha-rahman.txt,monthlyDebtPayments,1150
+e02-aisha-rahman.txt,loanAmount,300000
+e02-aisha-rahman.txt,propertyValue,360000
+e02-aisha-rahman.txt,interestRate,6.5
+e02-aisha-rahman.txt,loanTermMonths,180
+e02-aisha-rahman.txt,creditScore,702
+e03-tom-nguyen-paystub.txt,applicantName,Tom Nguyen
+e03-tom-nguyen-paystub.txt,monthlyIncome,6283.33
+e04-laura-kim.txt,applicantName,Laura Kim
+e04-laura-kim.txt,employer,Northline Retail
+e04-laura-kim.txt,monthlyIncome,5400
+e04-laura-kim.txt,monthlyDebtPayments,900
+e04-laura-kim.txt,loanAmount,32000
+e04-laura-kim.txt,interestRate,7.9
+e04-laura-kim.txt,loanTermMonths,72
+e04-laura-kim.txt,creditScore,664
+e05-daniel-ortiz.txt,applicantName,Daniel Ortiz
+e05-daniel-ortiz.txt,employer,Bayside Engineering
+e05-daniel-ortiz.txt,annualIncome,132000
+e05-daniel-ortiz.txt,monthlyDebtPayments,2450
+e05-daniel-ortiz.txt,loanAmount,410000
+e05-daniel-ortiz.txt,propertyValue,520000
+e05-daniel-ortiz.txt,interestRate,6.25
+e05-daniel-ortiz.txt,loanTermMonths,360
+e05-daniel-ortiz.txt,creditScore,755
+e06-grace-lee-paystub.txt,applicantName,Grace Lee
+e06-grace-lee-paystub.txt,monthlyIncome,6250
+e07-omar-farouk.txt,applicantName,Omar Farouk
+e07-omar-farouk.txt,employer,Crescent Pharmacy
+e07-omar-farouk.txt,annualIncome,64000
+e07-omar-farouk.txt,monthlyDebtPayments,1900
+e07-omar-farouk.txt,loanAmount,15000
+e07-omar-farouk.txt,interestRate,11.5
+e07-omar-farouk.txt,loanTermMonths,48
+e07-omar-farouk.txt,creditScore,631
+e08-sofia-rossi.txt,applicantName,Sofia Rossi
+e08-sofia-rossi.txt,employer,Harbor Freight Partners
+e08-sofia-rossi.txt,annualIncome,101500
+e08-sofia-rossi.txt,monthlyDebtPayments,1320
+e08-sofia-rossi.txt,loanAmount,350000
+e08-sofia-rossi.txt,propertyValue,385000
+e08-sofia-rossi.txt,interestRate,6.99
+e08-sofia-rossi.txt,loanTermMonths,360
+e08-sofia-rossi.txt,creditScore,689

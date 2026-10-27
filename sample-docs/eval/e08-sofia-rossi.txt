@@ -1,0 +1,11 @@
+LOAN SUMMARY (SAMPLE - FICTIONAL DATA)
+
+Borrower: Sofia Rossi
+Employer: Harbor Freight Partners
+Gross Annual Income: $101,500
+Total Monthly Debt Payments: $1,320
+Loan Amount: $350,000
+Purchase Price: $385,000
+Interest Rate: 6.99%
+Loan Term: 30 years
+FICO Score: 689

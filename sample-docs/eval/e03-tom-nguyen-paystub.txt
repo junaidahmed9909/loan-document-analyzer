@@ -1,0 +1,7 @@
+SUMMIT DENTAL GROUP - PAY STATEMENT (SAMPLE - FICTIONAL DATA)
+
+Employee: Tom Nguyen
+Pay Frequency: Weekly
+Period: 2026-09-07 to 2026-09-13
+Gross Pay: $1,450.00
+Net Pay: $1,102.75

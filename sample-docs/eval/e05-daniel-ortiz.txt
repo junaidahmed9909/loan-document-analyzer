@@ -1,0 +1,11 @@
+REFINANCE APPLICATION (SAMPLE - FICTIONAL DATA)
+
+Primary borrower ........ Daniel Ortiz
+Employer ................ Bayside Engineering
+Income (annual) ......... $132,000
+Debts per month ......... $2,450
+Requested amount ........ $410,000
+Appraisal ............... $520,000
+Interest ................ 6.25%
+Term .................... 30 yrs
+Score ................... 755

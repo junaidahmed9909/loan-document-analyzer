@@ -1,0 +1,11 @@
+HOME LOAN REQUEST FORM (SAMPLE - FICTIONAL DATA)
+
+Name of Applicant: Aisha Rahman
+Works at: Greenfield Logistics
+Yearly Gross Pay: 88,000 USD
+Existing monthly obligations: $1,150
+Amount of Loan: $300,000
+Home Value: $360,000
+Rate: 6.5% fixed
+Duration: 15 years
+FICO: 702

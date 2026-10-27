@@ -1,0 +1,10 @@
+AUTO LOAN APPLICATION (SAMPLE - FICTIONAL DATA)
+
+Applicant: Laura Kim
+Company: Northline Retail
+Monthly Gross Income: $5,400
+Total Monthly Debt: $900
+Loan Amount: $32,000
+APR: 7.9%
+Loan Term: 72 months
+Credit Score: 664
