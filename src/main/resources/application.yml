@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: loan-document-analyzer
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 60MB
+
+llm:
+  api-key: ${ANTHROPIC_API_KEY:}
+  model: ${LLM_MODEL:claude-haiku-5-5}
+  base-url: ${LLM_BASE_URL:https://api.anthropic.com}
+  max-tokens: 1024
+  timeout: PT60S
+  extraction-enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics

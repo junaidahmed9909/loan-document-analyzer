@@ -1,0 +1,29 @@
+UNIFORM RESIDENTIAL LOAN APPLICATION (SAMPLE - FICTIONAL DATA)
+
+Section 1: Borrower Information
+Applicant Name: Maria Lopez
+Date of Birth: 1990-04-12
+Current Address: 418 Maple Ridge Dr, Ann Arbor, MI 48104
+
+Section 2: Employment and Income
+Employer: Brightline Health Systems
+Position: Senior Data Analyst
+Years with employer: 6
+Annual Gross Income: $96,000.00
+
+Section 3: Liabilities
+Auto loan: $420 per month
+Student loan: $310 per month
+Credit cards (minimum payments): $120 per month
+Total Monthly Debt Payments: $850.00
+
+Section 4: Loan and Property
+Loan Purpose: Purchase
+Requested Loan Amount: $320,000
+Purchase Price: $400,000
+Interest Rate: 6.25%
+Loan Term: 30 years
+Property Type: Single family residence
+
+Section 5: Credit
+Credit Score: 742 (tri-merge, pulled 2026-09-02)

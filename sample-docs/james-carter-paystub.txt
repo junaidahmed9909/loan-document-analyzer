@@ -1,0 +1,9 @@
+NORTHGATE LOGISTICS PAYROLL (SAMPLE - FICTIONAL DATA)
+
+Employee: James Carter
+Pay Frequency: Semi-monthly
+Pay Period: 2026-09-01 to 2026-09-15
+
+Gross Pay: $3,750.00
+Taxes and deductions: $1,012.50
+Net Pay: $2,737.50

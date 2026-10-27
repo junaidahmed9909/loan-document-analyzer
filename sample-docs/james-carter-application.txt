@@ -1,0 +1,13 @@
+LOAN APPLICATION SUMMARY (SAMPLE - FICTIONAL DATA)
+
+Borrower Name: James Carter
+Employer: Northgate Logistics
+Annual Income: $120,000
+Monthly Debts: $2,100
+Loan Amount: $380,000
+Appraised Value: $400,000
+Interest Rate: 7.1%
+Loan Term: 360 months
+FICO Score: 655
+
+Notes from applicant: Planning to use savings plus a family gift for the down payment and closing costs.

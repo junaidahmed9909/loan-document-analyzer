@@ -1,0 +1,10 @@
+PERSONAL LOAN APPLICATION (SAMPLE - FICTIONAL DATA)
+
+Applicant Name: Priya Shah
+Employer: Riverside Retail Group
+Gross Monthly Income: $6,200
+Total Monthly Debt: $3,100
+Loan Amount: $25,000
+Credit Score: 598
+
+Purpose: Debt consolidation

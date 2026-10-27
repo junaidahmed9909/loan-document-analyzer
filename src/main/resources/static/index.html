@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loan Document Analyzer</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --ink:#1d2330; --muted:#5d6678; --line:#e3e6ec; --accent:#2457d6;
+          --high:#c62828; --med:#b26a00; --low:#2e7d32; --info:#5d6678; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#12151b; --card:#1b2029; --ink:#e7eaf0; --muted:#9aa3b5; --line:#2a313d; --accent:#7aa2ff; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); }
+  main { max-width:960px; margin:0 auto; padding:24px 16px 64px; }
+  h1 { font-size:24px; margin:0 0 4px; }
+  .sub { color:var(--muted); margin:0 0 20px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px; margin-bottom:16px; }
+  h2 { font-size:16px; margin:0 0 12px; }
+  button { background:var(--accent); color:#fff; border:0; border-radius:8px; padding:9px 16px; font-weight:600; cursor:pointer; }
+  button:disabled { opacity:.5; cursor:default; }
+  input[type=text] { width:100%; padding:9px 12px; border:1px solid var(--line); border-radius:8px; background:transparent; color:var(--ink); font:inherit; }
+  .row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .grow { flex:1; min-width:200px; }
+  .badge { display:inline-block; padding:2px 10px; border-radius:999px; font-weight:700; font-size:13px; color:#fff; }
+  .HIGH { background:var(--high); } .MEDIUM { background:var(--med); } .LOW { background:var(--low); } .INFO { background:var(--info); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; }
+  .kv { border:1px solid var(--line); border-radius:8px; padding:8px 10px; }
+  .kv b { display:block; font-size:12px; color:var(--muted); font-weight:500; }
+  ul.flags { list-style:none; padding:0; margin:12px 0 0; }
+  ul.flags li { padding:8px 0; border-top:1px solid var(--line); display:flex; gap:10px; align-items:flex-start; }
+  .cite { border-left:3px solid var(--accent); padding:6px 10px; margin:8px 0; color:var(--muted); white-space:pre-wrap; font-size:13px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .hidden { display:none; }
+  .err { color:var(--high); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Loan Document Analyzer</h1>
+  <p class="sub">Upload one applicant's documents. You'll get the key figures, risk flags and a way to ask questions with cited answers. <span id="mode" class="muted"></span></p>
+
+  <section class="card">
+    <h2>1. Upload documents</h2>
+    <div class="row">
+      <input id="files" type="file" multiple accept=".pdf,.txt,.md,.csv" class="grow">
+      <button id="analyze">Analyze</button>
+    </div>
+    <p class="muted">PDF or text. Try the files in <code>sample-docs/</code>. Use fictional data only.</p>
+    <p id="uploadError" class="err"></p>
+  </section>
+
+  <section id="result" class="card hidden">
+    <h2>2. Summary <span id="level" class="badge"></span></h2>
+    <div id="metrics" class="grid"></div>
+    <ul id="flags" class="flags"></ul>
+    <p id="warnings" class="muted"></p>
+  </section>
+
+  <section id="qa" class="card hidden">
+    <h2>3. Ask about these documents</h2>
+    <div class="row">
+      <input id="question" type="text" class="grow" placeholder="e.g. Where is the down payment coming from?" maxlength="500">
+      <button id="ask">Ask</button>
+    </div>
+    <div id="answer"></div>
+  </section>
+</main>
+<script>
+  const $ = (id) => document.getElementById(id);
+  let caseId = null;
+  const money = (v) => v == null ? "—" : "$" + Number(v).toLocaleString(undefined, {maximumFractionDigits: 2});
+  const text = (v) => v == null ? "—" : String(v);
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+  fetch("/api/status").then(r => r.json()).then(s => {
+    $("mode").textContent = s.llmEnabled ? `AI mode: ${s.model}` : "Search-only mode (no API key set)";
+  }).catch(() => {});
+
+  $("analyze").onclick = async () => {
+    const files = $("files").files;
+    $("uploadError").textContent = "";
+    if (!files.length) { $("uploadError").textContent = "Pick at least one file."; return; }
+    const form = new FormData();
+    for (const f of files) form.append("files", f);
+    $("analyze").disabled = true; $("analyze").textContent = "Analyzing…";
+    try {
+      const res = await fetch("/api/cases", { method: "POST", body: form });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.detail || "Upload failed");
+      render(data);
+    } catch (e) { $("uploadError").textContent = e.message; }
+    finally { $("analyze").disabled = false; $("analyze").textContent = "Analyze"; }
+  };
+
+  function render(c) {
+    caseId = c.id;
+    const a = c.applicant, r = c.risk;
+    $("level").textContent = r.level + " RISK"; $("level").className = "badge " + r.level;
+    const items = [
+      ["Applicant", text(a.applicantName)], ["Employer", text(a.employer)],
+      ["Monthly income", money(a.monthlyIncome ?? (a.annualIncome ? a.annualIncome / 12 : null))],
+      ["Monthly debts", money(a.monthlyDebtPayments)], ["Loan amount", money(a.loanAmount)],
+      ["Property value", money(a.propertyValue)], ["Credit score", text(a.creditScore)],
+      ["Est. new payment", money(r.estimatedMonthlyPayment)],
+      ["DTI", r.dtiPercent == null ? "—" : r.dtiPercent + "%"], ["LTV", r.ltvPercent == null ? "—" : r.ltvPercent + "%"],
+    ];
+    $("metrics").innerHTML = items.map(([k, v]) => `<div class="kv"><b>${k}</b>${esc(v)}</div>`).join("");
+    $("flags").innerHTML = r.flags.length
+      ? r.flags.map(f => `<li><span class="badge ${f.severity}">${f.severity}</span><span>${esc(f.message)}</span></li>`).join("")
+      : "<li>No risk flags raised.</li>";
+    $("warnings").textContent = (c.warnings || []).join(" ");
+    $("result").classList.remove("hidden"); $("qa").classList.remove("hidden"); $("answer").innerHTML = "";
+  }
+
+  $("ask").onclick = async () => {
+    const q = $("question").value.trim();
+    if (!q || !caseId) return;
+    $("ask").disabled = true; $("answer").innerHTML = '<p class="muted">Thinking…</p>';
+    try {
+      const res = await fetch(`/api/cases/${caseId}/questions`, {
+        method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({question: q})
+      });
+      const d = await res.json();
+      if (!res.ok) throw new Error(d.detail || "Request failed");
+      const warn = d.mode === "llm" && !d.grounded ? '<p class="err">No valid citations, so treat this answer with care.</p>' : "";
+      $("answer").innerHTML = `<p>${esc(d.answer)}</p>${warn}` + d.citations.map(c =>
+        `<div class="cite"><b>[${c.number}] ${esc(c.documentName)}, page ${c.page}</b>\n${esc(c.excerpt)}</div>`).join("");
+    } catch (e) { $("answer").innerHTML = `<p class="err">${esc(e.message)}</p>`; }
+    finally { $("ask").disabled = false; }
+  };
+  $("question").addEventListener("keydown", (e) => { if (e.key === "Enter") $("ask").click(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+BRIGHTLINE HEALTH SYSTEMS - EARNINGS STATEMENT (SAMPLE - FICTIONAL DATA)
+
+Employee Name: Maria Lopez
+Employee ID: 77120
+Pay Period: 2026-09-01 to 2026-09-14
+Pay Date: 2026-09-19
+Pay Frequency: Biweekly
+
+Gross Pay: $3,692.31
+Federal Tax: $512.40
+State Tax: $156.92
+Social Security: $228.92
+Medicare: $53.54
+401(k): $221.54
+Net Pay: $2,518.99
+
+Year-to-date Gross: $66,461.58
